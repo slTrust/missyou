@@ -13,8 +13,8 @@ public class HeroConfiguration {
         return new Camille("camille",18);
     }
 
-    @Bean
-    public ISkill diana(){
-        return new Diana();
-    }
+//    @Bean
+//    public ISkill diana(){
+//        return new Diana();
+//    }
 }
