@@ -4,6 +4,10 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Diana {
+    public Diana() {
+        System.out.println("hello,Diana");
+    }
+
     public void q(){
         System.out.println("Diana Q");
     }
