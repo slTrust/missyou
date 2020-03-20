@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/v1/banner")
 public class BannerController {
     @Autowired
-    private ISkill camille;
+    private ISkill iSkill;
 
     @Autowired
     private IConnect iConnect;
 
     @GetMapping("/test")
     public String test2() {
-        camille.q();
+        iSkill.q();
         return "Hello,亚瑟";
     }
 

@@ -3,7 +3,7 @@ package com.lin.missyou.sample.hero;
 import com.lin.missyou.sample.ISkill;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class Diana  implements ISkill {
     public Diana() { System.out.println("hello,Diana"); }
     public void q(){
