@@ -1,5 +1,6 @@
 package com.lin.missyou.api.v1;
 
+import com.lin.missyou.exception.http.NotFoundException;
 import com.lin.missyou.sample.IConnect;
 import com.lin.missyou.sample.ISkill;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,9 +16,9 @@ public class BannerController {
     private ISkill iSkill;
 
     @GetMapping("/test")
-    public String test2() throws Exception {
+    public String test2(){
         iSkill.q();
-        throw new Exception("这里错误了");
+        throw new NotFoundException(10001);
     }
 
 }
