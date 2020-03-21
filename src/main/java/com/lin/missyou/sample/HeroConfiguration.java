@@ -16,11 +16,18 @@ import org.springframework.context.annotation.Configuration;
 public class HeroConfiguration {
 
     @Bean
+    public ISkill irelia(){
+        return new Irelia();
+    }
+
+    /*
+    @Bean
 //    @ConditionalOnBean(name="mysql") // ioc 里有 mysql这个 bean ,就把它 放入容器
     @ConditionalOnMissingBean(name="mysql") // ioc 里 不存在 mysql这个 bean 条件成立
     public ISkill diana(){
         return new Diana();
     }
+    */
 
 
     /*
