@@ -14,21 +14,10 @@ public class BannerController {
     @Autowired
     private ISkill iSkill;
 
-    @Autowired
-    private IConnect iConnect;
-
     @GetMapping("/test")
-    public String test2() {
+    public String test2() throws Exception {
         iSkill.q();
-        return "Hello,亚瑟";
+        throw new Exception("这里错误了");
     }
-
-    @GetMapping("/test_sql")
-    public String test_sql() {
-        iConnect.connect();
-        return "Hello,sql";
-    }
-
-
 
 }
