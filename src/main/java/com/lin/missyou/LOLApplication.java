@@ -1,5 +1,6 @@
 package com.lin.missyou;
 
+import com.lin.missyou.sample.EnableLOLConfiguration;
 import com.lin.missyou.sample.HeroConfiguration;
 import com.lin.missyou.sample.ISkill;
 import com.lin.missyou.sample.hero.LOLConfigurationSelector;
@@ -11,7 +12,8 @@ import org.springframework.context.annotation.Import;
 
 //@ComponentScan
 //@Import(HeroConfiguration.class)
-@Import(LOLConfigurationSelector.class)
+//@Import(LOLConfigurationSelector.class)
+@EnableLOLConfiguration
 public class LOLApplication {
     public static void main(String[] args) {
         ConfigurableApplicationContext context = new SpringApplicationBuilder(LOLApplication.class)
