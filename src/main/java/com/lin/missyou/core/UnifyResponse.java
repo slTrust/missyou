@@ -10,4 +10,16 @@ public class UnifyResponse {
         this.message = message;
         this.request = request;
     }
+
+    public int getCode() {
+        return code;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public String getRequest() {
+        return request;
+    }
 }
