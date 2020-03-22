@@ -7,15 +7,17 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @ControllerAdvice
-@ResponseBody
 public class GlobalExceptionAdvice {
 
     @Autowired
@@ -23,6 +25,7 @@ public class GlobalExceptionAdvice {
 
     @ExceptionHandler(value=Exception.class)
     @ResponseStatus(code= HttpStatus.INTERNAL_SERVER_ERROR)
+    @ResponseBody
     public UnifyResponse handlerException(HttpServletRequest req, Exception e) {
         String requestUrl = req.getRequestURI();
         String method = req.getMethod();
@@ -33,6 +36,7 @@ public class GlobalExceptionAdvice {
     }
 
     @ExceptionHandler(value=HttpException.class)
+    @ResponseBody
     public ResponseEntity<UnifyResponse> handlerHttpException(HttpServletRequest req, HttpException e) {
         String requestUrl = req.getRequestURI();
         String method = req.getMethod();
@@ -46,5 +50,25 @@ public class GlobalExceptionAdvice {
 
         ResponseEntity<UnifyResponse> r = new ResponseEntity<>(message,header,httpStatus);
         return r;
+    }
+
+
+    @ExceptionHandler(value= MethodArgumentNotValidException.class)
+    @ResponseStatus(code= HttpStatus.BAD_REQUEST)
+    @ResponseBody
+    public UnifyResponse handlerBeanValidation(HttpServletRequest req, MethodArgumentNotValidException e) {
+        String requestUrl = req.getRequestURI();
+        String method = req.getMethod();
+
+        List<ObjectError> errors = e.getBindingResult().getAllErrors();
+        String messages = formatAllErrorMessages(errors);
+        return new UnifyResponse(10001,messages,method + " " + requestUrl);
+    }
+
+    private String formatAllErrorMessages(List<ObjectError> errors){
+        StringBuffer errorMsg = new StringBuffer();
+        errors.forEach(error ->
+                errorMsg.append(error.getDefaultMessage()).append(";"));
+        return errorMsg.toString();
     }
 }
