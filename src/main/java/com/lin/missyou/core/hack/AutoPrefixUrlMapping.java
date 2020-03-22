@@ -1,24 +1,34 @@
 package com.lin.missyou.core.hack;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.servlet.mvc.method.RequestMappingInfo;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
 import java.lang.reflect.Method;
 
 public class AutoPrefixUrlMapping extends RequestMappingHandlerMapping {
+
+    @Value("${missyou.api-package}")
+    private String apiPackagePath;
+
     @Override
     protected RequestMappingInfo getMappingForMethod(Method method, Class<?> handlerType) {
         RequestMappingInfo mappingInfo = super.getMappingForMethod(method,handlerType);
-        String packageName = this.getPrefix(handlerType);
-        System.out.println(packageName); // com.lin.missyou.api.v1
         if(mappingInfo != null){
-
+            String prefix = this.getPrefix(handlerType);
+            /*
+            RequestMappingInfo.paths(prefix) 代表前缀 如 /v1
+            .build() 返回 RequestMappingInfo 对象
+            .combine() 连接原来的 路径信息
+             */
+            return RequestMappingInfo.paths(prefix).build().combine(mappingInfo);
         }
         return mappingInfo;
     }
 
     private String getPrefix(Class<?> handlerType){
         String packageName = handlerType.getPackage().getName();
-        return packageName;
+        String dotPath = packageName.replaceAll(this.apiPackagePath,"");
+        return dotPath.replace(".","/");
     }
 }
