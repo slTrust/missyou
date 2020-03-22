@@ -1,7 +1,6 @@
 package com.lin.missyou.api.v1;
 
 import com.lin.missyou.dto.PersonDTO;
-import com.lin.missyou.exception.http.NotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -37,11 +36,10 @@ public class BannerController {
     }
 
     @PostMapping("/test5/{id}")
-    public String test5(@PathVariable Integer id,
+    public PersonDTO test5(@PathVariable Integer id,
                         @RequestParam String name,
                         @RequestBody PersonDTO person){
-        System.out.println(person.getName() + "," + person.getAge());
-        return "id:" + id + ",name:" + name;
+        return person;
     }
 
 

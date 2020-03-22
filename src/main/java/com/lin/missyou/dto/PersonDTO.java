@@ -1,14 +1,13 @@
 package com.lin.missyou.dto;
 
-import lombok.*;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Builder
 @Getter
-@Setter
-//@AllArgsConstructor
-@NoArgsConstructor
-@RequiredArgsConstructor
 public class PersonDTO {
-    @NonNull
     private String name;
     private Integer age;
 }
