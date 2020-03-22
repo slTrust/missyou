@@ -39,7 +39,11 @@ public class BannerController {
     public PersonDTO test5(@PathVariable Integer id,
                         @RequestParam String name,
                         @RequestBody PersonDTO person){
-        return person;
+        PersonDTO dto = PersonDTO.builder()
+                .name(person.getName())
+                .age(person.getAge())
+                .build();
+        return dto;
     }
 
 
