@@ -3,8 +3,6 @@ package com.lin.missyou.service;
 import org.springframework.stereotype.Service;
 
 @Service
-public class BannerService {
-    void getByName(String name){
-
-    }
+public interface BannerService {
+    void getByName(String name);
 }
