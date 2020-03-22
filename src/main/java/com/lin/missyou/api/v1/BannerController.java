@@ -1,24 +1,28 @@
 package com.lin.missyou.api.v1;
 
 import com.lin.missyou.exception.http.NotFoundException;
-import com.lin.missyou.sample.IConnect;
-import com.lin.missyou.sample.ISkill;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
 @RequestMapping("/banner")
 public class BannerController {
-    @Autowired
-    private ISkill iSkill;
 
-    @GetMapping("/test")
-    public String test2(){
-        iSkill.q();
-        throw new NotFoundException(10001);
+    @GetMapping("/test/{id}")
+    public String test1(@PathVariable Integer id){
+        return id + "";
     }
+
+    @GetMapping("/test2/{id1}")
+    public String test2(@PathVariable(name="id1") Integer id){
+        return id + "";
+    }
+
+    @GetMapping("/test3/{id}")
+    public String test3(@PathVariable Integer id, @RequestParam String name){
+        return "id:" + id + ",name:" + name;
+    }
+
+
 
 }
