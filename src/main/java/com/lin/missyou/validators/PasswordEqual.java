@@ -9,6 +9,11 @@ import java.lang.annotation.*;
 @Target({ElementType.TYPE}) // 用在那些目标
 @Constraint(validatedBy = PasswordValidator.class) // 传入注解的关联类 ，可指定多个
 public @interface PasswordEqual {
+
+    int min() default 4;
+
+    int max() default 6;
+
     String message() default "password are not equal";
 
     Class<?>[] groups() default {};

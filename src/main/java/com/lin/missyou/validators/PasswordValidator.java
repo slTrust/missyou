@@ -6,6 +6,14 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 public class PasswordValidator implements ConstraintValidator<PasswordEqual, PersonDTO> {
+    private int min;
+    private int max;
+
+    @Override
+    public void initialize(PasswordEqual constraintAnnotation) {
+        this.min = constraintAnnotation.min();
+        this.max = constraintAnnotation.max();
+    }
 
     /*
     ConstraintValidator<> 是一个泛型接口
@@ -22,7 +30,6 @@ public class PasswordValidator implements ConstraintValidator<PasswordEqual, Per
         boolean match = password1.equals(password2);
         return match;
     }
-
 
 
 }
