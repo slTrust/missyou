@@ -12,6 +12,6 @@ public class Spu {
     private String title;
     private String subtitle;
 
-//    @ManyToMany
-//    private List<Theme> themeList;
+    @ManyToMany(mappedBy = "spuList") //
+    private List<Theme> themeList;
 }
