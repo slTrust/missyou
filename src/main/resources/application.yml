@@ -1,5 +1,6 @@
-server:
-  port: 8081
+spring:
+  profiles:
+    active: prod
 
 missyou:
   api-package: com.lin.missyou.api
