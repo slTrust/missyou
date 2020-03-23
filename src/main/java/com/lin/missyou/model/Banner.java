@@ -1,5 +1,8 @@
 package com.lin.missyou.model;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Banner {
 
     private long id;
