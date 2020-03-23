@@ -18,7 +18,6 @@ public class Banner {
     private String img;
     private String title;
 
-    @OneToMany
-    @JoinColumn(name="bannerId") // 指明外键
+    @OneToMany(mappedBy = "banner") // bannerItem 里的 导航属性的名字 banner
     private List<BannerItem> items;
 }
