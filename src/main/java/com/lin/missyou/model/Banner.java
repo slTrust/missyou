@@ -1,9 +1,10 @@
 package com.lin.missyou.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
-@Table(name="banner1")
+@Table(name="banner")
 public class Banner {
     @Id
     private long id;
@@ -15,4 +16,8 @@ public class Banner {
     private String description;
     private String img;
     private String title;
+
+    // 对应一组 BannerItem
+    @OneToMany
+    private List<BannerItem> items;
 }
