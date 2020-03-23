@@ -1,8 +1,6 @@
 package com.lin.missyou.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -14,5 +12,7 @@ public class Theme {
 
     // 导航属性
     @ManyToMany
+    @JoinTable(name="theme_spu",joinColumns = @JoinColumn(name = "theme_id"),
+    inverseJoinColumns = @JoinColumn(name="spu_id"))
     private List<Spu> spuList;
 }

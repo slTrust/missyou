@@ -12,7 +12,6 @@ public class Spu {
     private String title;
     private String subtitle;
 
-    // 导航属性
-    @ManyToMany
-    private List<Theme> themeList;
+//    @ManyToMany
+//    private List<Theme> themeList;
 }
