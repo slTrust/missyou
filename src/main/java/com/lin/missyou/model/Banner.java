@@ -7,6 +7,7 @@ import java.util.List;
 @Table(name="banner")
 public class Banner {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // id自增长
     private long id;
 
     @Column(length = 16)
@@ -17,7 +18,7 @@ public class Banner {
     private String img;
     private String title;
 
-    // 对应一组 BannerItem
     @OneToMany
+    @JoinColumn(name="bannerId") // 指明外键
     private List<BannerItem> items;
 }
