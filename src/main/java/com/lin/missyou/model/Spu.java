@@ -10,7 +10,7 @@ import java.util.Objects;
 @Entity
 @Getter
 @Setter
-public class SpuEntity extends BaseEntity{
+public class Spu extends BaseEntity{
     @Id
     private Long id;
     private String title;
