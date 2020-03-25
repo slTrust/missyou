@@ -1,9 +1,7 @@
 package com.lin.missyou.api.v1;
 
-import com.lin.missyou.dto.PersonDTO;
-import com.lin.missyou.model.Banner;
+import com.lin.missyou.model_EntityCreateTable.Banner;
 import com.lin.missyou.service.BannerService;
-import org.hibernate.validator.constraints.Range;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;

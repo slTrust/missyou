@@ -1,4 +1,4 @@
-package com.lin.missyou.model;
+package com.lin.missyou.model_EntityCreateTable;
 
 import javax.persistence.*;
 import java.util.List;
