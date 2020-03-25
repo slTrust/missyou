@@ -9,10 +9,7 @@ import com.lin.missyou.vo.SpuSimplifyVO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.constraints.Positive;
 import java.util.ArrayList;
@@ -43,7 +40,8 @@ public class SpuController {
     }
 
     @GetMapping("/latest")
-    public List<SpuSimplifyVO> getLatestSpuList(){
+    public List<SpuSimplifyVO> getLatestSpuList(@RequestParam(defaultValue = "0") Integer start,
+                                                @RequestParam(defaultValue = "10") Integer size){
         Mapper mapper = DozerBeanMapperBuilder.buildDefault();
         List<Spu> spuList = this.spuService.getLatestPagingSpu();
         List<SpuSimplifyVO> vos = new ArrayList<>();
