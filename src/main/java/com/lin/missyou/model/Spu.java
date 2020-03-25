@@ -4,8 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
-import java.util.Objects;
+import java.util.List;
 
 @Entity
 @Getter
@@ -29,4 +28,18 @@ public class Spu extends BaseEntity{
 
 //    private Object spuThemeImg;
     private String forThemeImg;
+
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name="spuId")
+    private List<Sku> skuList;
+
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name="spuId")
+    private List<SpuImg> spuImgList;
+
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name="spuId")
+    private List<SpuDetailImg> spuDetailImgList;
+
+
 }
