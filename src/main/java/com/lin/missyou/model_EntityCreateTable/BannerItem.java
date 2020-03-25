@@ -2,7 +2,7 @@ package com.lin.missyou.model_EntityCreateTable;
 
 import javax.persistence.*;
 
-@Entity
+//@Entity
 public class BannerItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // id自增长

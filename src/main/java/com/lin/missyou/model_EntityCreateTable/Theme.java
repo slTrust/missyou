@@ -3,7 +3,7 @@ package com.lin.missyou.model_EntityCreateTable;
 import javax.persistence.*;
 import java.util.List;
 
-@Entity
+//@Entity
 public class Theme {
     @Id
     private Long id;

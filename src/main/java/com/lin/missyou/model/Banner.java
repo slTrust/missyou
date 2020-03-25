@@ -1,6 +1,5 @@
 package com.lin.missyou.model;
 
-import com.lin.missyou.model_EntityCreateTable.BannerItem;
 import lombok.Getter;
 import lombok.Setter;
 

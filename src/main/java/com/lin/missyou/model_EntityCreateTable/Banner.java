@@ -3,8 +3,8 @@ package com.lin.missyou.model_EntityCreateTable;
 import javax.persistence.*;
 import java.util.List;
 
-@Entity
-@Table(name="banner")
+//@Entity
+//@Table(name="banner")
 public class Banner {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // id自增长

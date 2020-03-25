@@ -1,6 +1,6 @@
 package com.lin.missyou.api.v1;
 
-import com.lin.missyou.model_EntityCreateTable.Banner;
+import com.lin.missyou.model.Banner;
 import com.lin.missyou.service.BannerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -18,7 +18,6 @@ public class BannerController {
 
     @GetMapping("/name/{name}")
     public Banner getByName(@PathVariable @NotBlank String name){
-        // 此行断点  http://localhost:8080/v1/banner/name/3
         Banner banner = bannerService.getByName(name);
         return banner;
     }

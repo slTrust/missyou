@@ -5,7 +5,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import java.util.List;
 
-@Entity
+//@Entity
 public class Spu {
     @Id
     private Long id;
