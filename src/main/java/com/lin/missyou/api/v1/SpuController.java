@@ -38,7 +38,7 @@ public class SpuController {
     }
 
     @GetMapping("/id/{id}/simplify")
-    public SpuSimplifyVO getSimplifySpu(@PathVariable @Positive Long id){
+    public SpuSimplifyVO getSimplifySpu(@PathVariable @Positive(message = "{id.positive}") Long id){
         Spu spu = spuService.getSpu(id);
         SpuSimplifyVO vo = new SpuSimplifyVO();
         BeanUtils.copyProperties(spu,vo);
