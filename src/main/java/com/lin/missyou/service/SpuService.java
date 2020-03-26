@@ -20,10 +20,15 @@ public class SpuService {
     }
 
     public Page<Spu> getLatestPagingSpu(Integer pageNum, Integer size){
-        // 构建一个 Pageable 对象
         Pageable page = PageRequest.of(pageNum, size, Sort.by("createTime").descending());
-
         return this.spuRepository.findAll(page);
     }
+
+    public Page<Spu> getCategory(Long cid,Boolean isRoot, Integer pageNum, Integer size){
+
+        return null;
+    }
+
+
 
 }
