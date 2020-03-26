@@ -7,20 +7,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 @Converter
-public class MapAndJson implements AttributeConverter<Map<String,Object>,String> {
-
+public class ListAndJson implements AttributeConverter<List<Object>,String> {
     @Autowired
     private ObjectMapper mapper;
-
     @Override
-    public String convertToDatabaseColumn(Map<String, Object> stringObjectMap) {
-
+    public String convertToDatabaseColumn(List<Object> objects) {
         try {
-            return mapper.writeValueAsString(stringObjectMap);
+            return mapper.writeValueAsString(objects);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
             // 要向前端反馈没意义， 应该返回错误,记录日志
@@ -30,12 +26,12 @@ public class MapAndJson implements AttributeConverter<Map<String,Object>,String>
 
     @Override
     @SuppressWarnings("unchecked")
-    public Map<String, Object> convertToEntityAttribute(String s) {
+    public List<Object> convertToEntityAttribute(String s) {
         try {
-            if(s == null){
+            if(s==null){
                 return null;
             }
-            Map<String,Object> t = mapper.readValue(s, HashMap.class);
+            List<Object> t = mapper.readValue(s, List.class);
             return t;
         } catch (JsonProcessingException e) {
             e.printStackTrace();
