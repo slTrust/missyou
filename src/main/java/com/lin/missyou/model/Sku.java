@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 
 @Entity
 @Getter
@@ -23,21 +24,9 @@ public class Sku extends BaseEntity{
     private Long spuId;
     private Long categoryId;
     private Long rootCategoryId;
-
-    private String specs;
+    // private List<Object> specs;
+    private Map<String,Object> specs;
     private String code;
     private Long stock;
-
-
-    public List<Spec> getSpecs(){
-        String specs = this.specs;
-        // Jackson 等序列化库
-        return null;
-    }
-
-    public void setSpecs(List<Spec> data){
-        String str = "data序列化后的字符串";
-        this.specs = str;
-    }
 
 }
