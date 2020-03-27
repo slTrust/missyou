@@ -7,6 +7,8 @@ import com.lin.missyou.exception.http.ServerErrorException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class GenericAndJson {
 
@@ -40,18 +42,17 @@ public class GenericAndJson {
        }
    }
 
-   public static <T> T jsonToList(String s, TypeReference<T> tr){
-       try {
-           if(s==null){
-               return null;
-           }
-           T list = GenericAndJson.mapper.readValue(s, tr);
-           return list;
-       } catch (JsonProcessingException e) {
-           e.printStackTrace();
-           throw new ServerErrorException(9999);
-       }
-   }
-
+    public static <T> List<T> jsonToList(String s){
+        try {
+            if(s==null){
+                return null;
+            }
+            List<T> list = GenericAndJson.mapper.readValue(s, new TypeReference<List<T>>() {});
+            return list;
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+            throw new ServerErrorException(9999);
+        }
+    }
 
 }

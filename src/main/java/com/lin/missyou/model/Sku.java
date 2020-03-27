@@ -43,10 +43,7 @@ public class Sku extends BaseEntity{
         if(this.specs == null){
             return Collections.emptyList();
         }
-        // 报错 这里是不能 List<Spec>的
-        // return GenericAndJson.jsonToList(this.specs,List<Spec>.class);
-        // 而是用 TypeReference<T>
-        return GenericAndJson.jsonToList(this.specs, new TypeReference<List<Spec>>() {});
+        return GenericAndJson.jsonToList(this.specs);
     }
 
     public void setSpecs(List<Spec> specs) {
