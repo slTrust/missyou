@@ -2,15 +2,11 @@ package com.lin.missyou.model;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.lin.missyou.util.GenericAndJson;
-import com.lin.missyou.util.ListAndJson;
-import com.sun.tools.javah.Gen;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import java.lang.reflect.Type;
 import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.List;
@@ -43,7 +39,7 @@ public class Sku extends BaseEntity{
         if(this.specs == null){
             return Collections.emptyList();
         }
-        return GenericAndJson.jsonToList(this.specs);
+        return GenericAndJson.jsonToObject(this.specs, new TypeReference<List<Spec>>() {});
     }
 
     public void setSpecs(List<Spec> specs) {
