@@ -37,3 +37,11 @@ spu详情数据
 
 通过首页六宫格快捷入口 获取 spu列表
 - http://localhost:8080/v1/category/grid/all
+
+> Theme
+
+获取多个 Theme 不包含 spuList
+- http://localhost:8080/v1/theme/by/names?names=t-1,t-2
+
+查询单个 Theme 以及他的 spuList
+- http://localhost:8080/v1/theme/name/t-1/with_spu
