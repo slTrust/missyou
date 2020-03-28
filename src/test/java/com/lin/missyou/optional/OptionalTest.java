@@ -90,5 +90,21 @@ public class OptionalTest {
         t6.orElseThrow(()-> new RuntimeException("空值")); // 如果是空 抛出异常
     }
 
+    @Test
+    public void testOption4(){
+        Optional<String> t1 = Optional.ofNullable("a");
+        String s1 = t1.map(t->t + "b").orElse("c");
+        System.out.println(s1); // ab
+
+
+        Optional<String> t2 = Optional.ofNullable(null);
+        String s2 = t2.map(t->t + "b").orElse("c");
+        System.out.println(s2); // c
+
+
+        Optional<String> t3 = Optional.ofNullable("a");
+        t3.map(t->t + "b").ifPresent(System.out::println); // 打印 ab
+    }
+
 
 }
