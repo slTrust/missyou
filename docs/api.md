@@ -28,3 +28,12 @@ spu详情数据
 
 通过首页六宫格快捷入口 获取 spu列表
 - http://localhost:8080/v1/spu/by/category/2?is_root=true
+
+> Category
+
+分类页面接口
+- http://localhost:8080/v1/category/all
+
+
+通过首页六宫格快捷入口 获取 spu列表
+- http://localhost:8080/v1/category/grid/all

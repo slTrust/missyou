@@ -15,8 +15,8 @@ public class CategoryService {
     private CategoryRepository categoryRepository;
 
     public Map<Integer,List<Category>> getAll(){
-        List<Category> roots = categoryRepository.findAllByIsRootOOrderByIndexAsc(true);
-        List<Category> subs = categoryRepository.findAllByIsRootOOrderByIndexAsc(false);
+        List<Category> roots = categoryRepository.findAllByIsRootOrderByIndexAsc(true);
+        List<Category> subs = categoryRepository.findAllByIsRootOrderByIndexAsc(false);
         Map<Integer,List<Category>> categories = new HashMap<>();
         categories.put(1,roots);
         categories.put(2,subs);
