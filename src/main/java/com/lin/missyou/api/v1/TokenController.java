@@ -24,7 +24,7 @@ public class TokenController {
 
         switch (userData.getType()){
             case USER_WX:
-                wxAuthenticationService.code2Session(userData.getAccount());
+                token = wxAuthenticationService.code2Session(userData.getAccount());
                 break;
             case USER_Email:
                 // 这里逻辑不写了，就是去 数据库对比 account password 是否符合
@@ -32,6 +32,8 @@ public class TokenController {
                 default:
                     throw new NotFoundException(10003);
         }
-        return null;
+
+        map.put("token",token);
+        return map;
     }
 }

@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lin.missyou.exception.http.ParameterException;
 import com.lin.missyou.model.User;
 import com.lin.missyou.repository.UserRepository;
+import com.lin.missyou.util.JwtToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -58,13 +59,16 @@ public class WxAuthenticationService {
 //        userOptional.ifPresentOrElse(Consummer, Runable) java9才支持
         if(userOptional.isPresent()){
             // TODO:返回JWT令牌
-            return "";
+            // 数字等级 scope
+            // 用户已注册
+            return JwtToken.makeToken(userOptional.get().getId());
         }
         User user = User.builder()
                 .openid(openid)
                 .build();
         userRepository.save(user);
         // TODO:返回JWT令牌
-        return "";
+        Long uid = user.getId();
+        return JwtToken.makeToken(uid);
     }
 }
