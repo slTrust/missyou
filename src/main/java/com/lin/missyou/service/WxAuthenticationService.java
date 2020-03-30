@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.text.MessageFormat;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
@@ -38,14 +39,14 @@ public class WxAuthenticationService {
 
         RestTemplate rest = new RestTemplate();
         String sessionText = rest.getForObject(url,String.class);
-
+        Map<String,Object> session = new HashMap<>();
         try {
-            Map<String,Object> session = mapper.readValue(sessionText,Map.class);
+            session = mapper.readValue(sessionText,Map.class);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
 
-        return null;
+        return this.registerUser(session);
     }
 
     private String registerUser(Map<String, Object> session) {
