@@ -2,6 +2,9 @@ package com.lin.missyou.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.lin.missyou.exception.http.ParameterException;
+import com.lin.missyou.model.User;
+import com.lin.missyou.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -9,12 +12,16 @@ import org.springframework.web.client.RestTemplate;
 
 import java.text.MessageFormat;
 import java.util.Map;
+import java.util.Optional;
 
 @Service
 public class WxAuthenticationService {
 
     @Autowired
     private ObjectMapper mapper;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @Value("${wx.code2session}")
     private String code2SessionUrl;
@@ -41,4 +48,22 @@ public class WxAuthenticationService {
         return null;
     }
 
+    private String registerUser(Map<String, Object> session) {
+        String openid = (String)session.get("openid");
+        if (openid == null){
+            throw new ParameterException(20004);
+        }
+        Optional<User> userOptional = this.userRepository.findByOpenid(openid);
+//        userOptional.ifPresentOrElse(Consummer, Runable) java9才支持
+        if(userOptional.isPresent()){
+            // TODO:返回JWT令牌
+            return "";
+        }
+        User user = User.builder()
+                .openid(openid)
+                .build();
+        userRepository.save(user);
+        // TODO:返回JWT令牌
+        return "";
+    }
 }
