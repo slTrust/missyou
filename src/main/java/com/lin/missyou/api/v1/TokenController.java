@@ -17,7 +17,7 @@ public class TokenController {
         Map<String,String> map = new HashMap<>();
         String token = "";
 
-        switch (userData.getLoginType()){
+        switch (userData.getType()){
             case USER_WX:
                 break;
             case USER_Email:
