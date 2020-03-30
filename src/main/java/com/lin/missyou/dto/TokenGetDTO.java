@@ -16,5 +16,5 @@ public class TokenGetDTO {
     private String password;
 
 
-    private LoginType type;
+    private LoginType loginType;
 }
